@@ -1,0 +1,31 @@
+.text-left
+  h1 Company Details
+= form_for @user, url: wizard_path do |f|
+  - if @user.errors.any?
+    .error_messages
+      h2
+        = pluralize(@user.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li= msg
+  .field
+    = f.label :Companypan
+    '
+    = f.text_field :company_pan
+  .field
+    = f.label :Typeofcompany
+    '
+    = f.text_field :type_of_company
+  .field
+    = f.label :Annualtrunover
+    '
+    = f.text_field :annual_trunover
+  .field
+    = f.label :FoundingDate
+    '
+    = f.date_select :funding_date, start_year: 1900, end_year: Date.today.year, include_blank: true
+  .actions
+    = f.submit "Continue"
+
+

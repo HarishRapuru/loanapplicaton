@@ -1,0 +1,33 @@
+.text-left
+  h1 Personal Details
+
+= form_for @user, url: wizard_path do |f|
+  - if @user.errors.any?
+    .error_messages
+      h2
+        = pluralize(@user.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li= msg
+  .field
+    = f.label :Name
+    '
+    = f.text_field :name
+  .field
+    = f.label :PanCard
+    '
+    = f.text_field :pan_card
+  .field
+    = f.label :Email
+    '
+    = f.text_field :email
+  .field
+    = f.label :Mobile
+    '
+    = f.text_field :mobile
+  .actions
+    = f.submit "Continue"
+
+
+

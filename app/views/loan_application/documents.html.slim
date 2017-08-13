@@ -1,0 +1,30 @@
+.text-left
+  h1 Documents Details
+
+= form_for @user, url: wizard_path do |f|
+  - if @user.errors.any?
+    .error_messages
+      h2
+        = pluralize(@user.errors.count, "error")
+        | prohibited this user from being saved:
+      ul
+        - @user.errors.full_messages.each do |msg|
+          li= msg
+  .field
+    = f.label :UploadPanCard
+    '
+    = f.file_field :pan_image
+  .field
+    = f.label :AadharCard
+    '
+    = f.file_field :aadhar_image
+  .field
+    = f.label :AddressProof
+    '
+    = f.file_field :address_image
+    '
+  .actions
+    = f.submit "Submit"
+
+
+
